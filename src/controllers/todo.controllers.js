@@ -8,10 +8,9 @@ res.status(201).json({message: 'Created'})
 
 };
 
-const readTodo = (req, res) => {
-
-    
-
+const readTodo = async(req, res) => {
+const todo = await Todo.find()    
+res.status(200).json({todo})
 };
 
 const updateTodo = async (req, res) => {};
