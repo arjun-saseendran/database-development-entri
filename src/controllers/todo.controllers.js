@@ -20,7 +20,11 @@ res.status(202).json({message: 'Updated'})
 
 };
 
-const deleteTodo = async (req, res) => {};
+const deleteTodo = async (req, res) => {
+    const {id} = req.params
+    await Todo.findByIdAndDelete(id)
+    res.status(204).json({message: 'Deleted'})
+};
 
 export { createTodo, readTodo, updateTodo, deleteTodo };
 
