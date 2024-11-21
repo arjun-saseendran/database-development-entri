@@ -13,7 +13,12 @@ const todo = await Todo.find()
 res.status(200).json({todo})
 };
 
-const updateTodo = async (req, res) => {};
+const updateTodo = async (req, res) => {
+const {id} = req.params
+await Todo.findByIdAndUpdate(id, req.body)
+res.status(202).json({message: 'Updated'})
+
+};
 
 const deleteTodo = async (req, res) => {};
 
