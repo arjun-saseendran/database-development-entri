@@ -1,15 +1,15 @@
 import { Todo } from "../models/todo.models.js";
 
-const createTodo = async(req, res) => {
-  const { todo } = req.body;
-  const newTodo = new Todo({ todo });
-
-  await newTodo
-    .save()
-    .then((newTodo) => console.log(newTodo))
-    .catch((error) => console.log(error));
-
-  res.status(201).json({ message: "Created" });
+const createTodo = async (req, res) => {
+  try {
+    const { todo } = req.body;
+    const newTodo = new Todo({ todo });
+    await newTodo.save();
+    res.status(201).json({ message: "Created" });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: "Todo conetent is required" });
+  }
 };
 
 const readTodo = async (req, res) => {
